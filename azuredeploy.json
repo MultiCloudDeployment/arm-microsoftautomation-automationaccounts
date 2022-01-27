@@ -1,0 +1,22 @@
+{
+	"$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+	"contentVersion": "",
+	"parameters": {},
+	"variables": {
+		"ArmResource": {}
+	},
+	"resources": [{}],
+	"outputs": {
+		"armTemplate": {
+			"type": "object",
+			"value": {
+				"$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+				"contentVersion": "",
+				"parameters": {},
+				"variables": {},
+				"resources": "[createArray(variables('ArmResource'))]",
+				"outputs": {}
+			}
+		}
+	}
+}
