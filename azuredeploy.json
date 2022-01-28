@@ -1,22 +1,77 @@
 {
-	"$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-	"contentVersion": "",
-	"parameters": {},
-	"variables": {
-		"ArmResource": {}
-	},
-	"resources": [{}],
-	"outputs": {
-		"armTemplate": {
-			"type": "object",
-			"value": {
-				"$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-				"contentVersion": "",
-				"parameters": {},
-				"variables": {},
-				"resources": "[createArray(variables('ArmResource'))]",
-				"outputs": {}
-			}
-		}
-	}
+ "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+ "contentVersion": "1.0.0.0",
+ "parameters": {
+  "name":{
+   "type": "string"
+  },
+  "location": {
+   "type": "string"
+  },
+  "tags": {
+   "type": "object"
+  },
+  "SkuName": {
+   "type": "string",
+   "allowedValues": [
+    "Free",
+    "Basic"
+   ]
+  },
+  "DisableLocalAuth": {
+   "type": "bool",
+   "default": false
+  },
+  "PublicNetworkAccess": {
+   "type": "bool",
+   "default": true
+  }
+ },
+ "variables": {
+  "ArmResource": {
+   "type": "Microsoft.Automation/automationAccounts",
+   "apiVersion": "2021-06-22",
+   "name": "[parameters('name')]",
+   "location": "[parameters('location')]",
+   "tags": "[parameters('tags')]",
+   "properties": {
+    "disableLocalAuth": "[parameters('DisableLocalAuth')]",
+    "publicNetworkAccess": "[parameters('PublicNetworkAccess')]",
+    "sku": {
+     "name": "[parameters('SkuName')]"
+    }
+   }
+  }
+ },
+ "resources": [
+  {
+   "type": "Microsoft.Resources/deployments",
+   "apiVersion": "2021-04-01",
+   "name": "[if(equals(variables('avset'),0),'NoAVSet',parameters('AvailabilitySetName'))]",
+   "properties": {
+    "mode": "Incremental",
+    "template": {
+     "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+     "contentVersion": "1.0.0.0",
+     "parameters": {},
+     "variables": {},
+     "resources": "[createArray(variables('ArmResource'))]",
+     "outputs": {}
+    }
+   }
+  }
+ ],
+ "outputs": {
+  "armTemplate": {
+   "type": "object",
+   "value": {
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {},
+    "variables": {},
+    "resources": "[createArray(variables('ArmResource'))]",
+    "outputs": {}
+   }
+  }
+ }
 }

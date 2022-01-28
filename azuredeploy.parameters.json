@@ -1,5 +1,24 @@
 {
-	"$schema": "http://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json#",
-	"contentVersion": "",
-	"parameters": {}
+ "$schema": "http://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json#",
+ "contentVersion": "",
+ "parameters": {
+  "name": {
+   "value": ""
+  },
+  "location": {
+   "value": ""
+  },
+  "tags": {
+   "value": {}
+  },
+  "SkuName": {
+   "value": ""
+  },
+  "DisableLocalAuth": {
+   "value": false
+  },
+  "PublicNetworkAccess": {
+   "value": true
+  }
+ }
 }
