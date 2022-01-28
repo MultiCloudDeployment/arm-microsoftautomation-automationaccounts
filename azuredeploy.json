@@ -1,6 +1,6 @@
 {
  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
- "contentVersion": "1.0.0.0",
+ "contentVersion": "1.0.0.1",
  "parameters": {
   "name":{
    "type": "string"
@@ -16,15 +16,16 @@
    "allowedValues": [
     "Free",
     "Basic"
-   ]
+   ],
+   "defaultValue": "Free"
   },
   "DisableLocalAuth": {
    "type": "bool",
-   "default": false
+   "defaultValue": false
   },
   "PublicNetworkAccess": {
    "type": "bool",
-   "default": true
+   "defaultValue": true
   }
  },
  "variables": {
@@ -52,7 +53,7 @@
     "mode": "Incremental",
     "template": {
      "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-     "contentVersion": "1.0.0.0",
+     "contentVersion": "1.0.0.1",
      "parameters": {},
      "variables": {},
      "resources": "[createArray(variables('ArmResource'))]",
@@ -66,7 +67,7 @@
    "type": "object",
    "value": {
     "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-    "contentVersion": "1.0.0.0",
+    "contentVersion": "1.0.0.1",
     "parameters": {},
     "variables": {},
     "resources": "[createArray(variables('ArmResource'))]",
