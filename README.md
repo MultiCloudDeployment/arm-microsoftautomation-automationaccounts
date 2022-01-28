@@ -5,5 +5,5 @@ Azure Automation delivers a cloud-based automation and configuration service tha
 
 ## Links
 - API https://docs.microsoft.com/en-us/rest/api/automation/automationaccount
-- ARM https://docs.microsoft.com/en-us/azure/templates/microsoft.automation/2015-10-31/automationaccounts
+- ARM https://docs.microsoft.com/en-us/azure/templates/microsoft.automation/automationaccounts?tabs=json
 - DOC https://docs.microsoft.com/en-us/azure/automation/
