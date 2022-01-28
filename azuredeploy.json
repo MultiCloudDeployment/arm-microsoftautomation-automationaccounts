@@ -1,15 +1,17 @@
 {
  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
- "contentVersion": "1.0.0.1",
+ "contentVersion": "1.0.0.2",
  "parameters": {
   "name":{
    "type": "string"
   },
   "location": {
-   "type": "string"
+   "type": "string",
+   "defaultValue": "[resourceGroup().location]"
   },
   "tags": {
-   "type": "object"
+   "type": "object",
+   "defaultValue": {}
   },
   "SkuName": {
    "type": "string",
@@ -53,7 +55,7 @@
     "mode": "Incremental",
     "template": {
      "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-     "contentVersion": "1.0.0.1",
+     "contentVersion": "1.0.0.2",
      "parameters": {},
      "variables": {},
      "resources": "[createArray(variables('ArmResource'))]",
@@ -67,7 +69,7 @@
    "type": "object",
    "value": {
     "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-    "contentVersion": "1.0.0.1",
+    "contentVersion": "1.0.0.2",
     "parameters": {},
     "variables": {},
     "resources": "[createArray(variables('ArmResource'))]",
