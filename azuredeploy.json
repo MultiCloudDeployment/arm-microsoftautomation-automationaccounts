@@ -47,7 +47,7 @@
   {
    "type": "Microsoft.Resources/deployments",
    "apiVersion": "2021-04-01",
-   "name": "[if(equals(variables('avset'),0),'NoAVSet',parameters('AvailabilitySetName'))]",
+   "name": "[concat(parameters('name'), '-deployment')]",
    "properties": {
     "mode": "Incremental",
     "template": {
