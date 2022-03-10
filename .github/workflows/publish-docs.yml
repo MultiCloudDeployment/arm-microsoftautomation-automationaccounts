@@ -20,6 +20,6 @@ jobs:
           $docName = "$($templateName)_$version";
           write-host $docName;
           # Generate markdown
-          Invoke-PSDocument -Module PSDocs.Azure -OutputPath "./" -InputObject $template.FullName -InstanceName $docName;
+          Invoke-PSDocument -Module PSDocs.Azure -OutputPath "out/" -InputObject $template.FullName -InstanceName $docName;
         }
       shell: pwsh
