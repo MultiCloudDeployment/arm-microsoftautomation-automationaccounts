@@ -15,6 +15,8 @@ jobs:
         $VerbosePreference = 'Continue';
         Get-AzDocTemplateFile | ForEach-Object {
           write-host $_.TemplateFile;
+          $temp = $_.TemplateFile |ConvertFrom-Json;
+          $temp |fl;
           $template = Get-Item -Path $_.TemplateFile;
           $templateName = $template.Directory.Parent.Name;
           $version = $template.Directory.Name;
