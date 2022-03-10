@@ -16,4 +16,4 @@ markdown:
 output:
   culture:
   - 'en-US'
-  path: null
+  path: docs
