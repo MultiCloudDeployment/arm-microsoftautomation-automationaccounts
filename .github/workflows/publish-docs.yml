@@ -14,13 +14,13 @@ jobs:
         Install-Module -Name 'PSDocs.Azure' -Repository PSGallery -force;
         #$VerbosePreference = 'Continue';
         Get-AzDocTemplateFile | ForEach-Object {
-          #write-host $_.TemplateFile;
-          $temp = Get-Content $_.TemplateFile |ConvertFrom-Json;
-          $template = Get-Item -Path $_.TemplateFile;
-          $templateName = $temp.metadata.name;
-          $version = $temp.ContentVersion;
-          $docName = "$($templateName)_$version";
-          #write-host $docName;
+          $TemplateFile = Get-Item -Path $_.TemplateFile;
+          $RepoName = $TemplateFile.Directory.Parent.Name;
+          $Template = Get-Content $TemplateFile |ConvertFrom-Json;
+          $Version = $Template.ContentVersion;
+          $docName = "README";
+          $ReadmeHeader = "[![Deploy to Azure](https://aka.ms/deploytoazurebutton)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FMultiCloudDeployment%2F$($RepoName)%2F$($Version)%2Fazuredeploy.json)"
+          Write-Host $ReadmeHeader
           # Generate markdown
           Invoke-PSDocument -Module PSDocs.Azure -OutputPath "out/docs" -InputObject $template.FullName -InstanceName $docName;
         };
