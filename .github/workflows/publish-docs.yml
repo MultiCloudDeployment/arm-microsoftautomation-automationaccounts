@@ -22,5 +22,6 @@ jobs:
           write-host $docName;
           # Generate markdown
           Invoke-PSDocument -Module PSDocs.Azure -OutputPath "out/docs" -InputObject $template.FullName -InstanceName $docName;
-        }
+        };
+        Get-ChildItem -Recurse
       shell: pwsh
