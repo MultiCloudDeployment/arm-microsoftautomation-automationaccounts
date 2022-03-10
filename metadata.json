@@ -1,0 +1,9 @@
+{
+ "$schema": "https://aka.ms/azure-quickstart-templates-metadata-schema#",
+ "type": "SubscriptionDeployment",
+ "itemDisplayName": "Create Azure Automation account",
+ "summary": "This template creates an Automation Account in Azure",
+ "description": "Azure Automation delivers a cloud-based automation and configuration service that provides consistent management across your Azure and non-Azure environments. It consists of process automation, update management, and configuration features. Azure Automation provides complete control during deployment, operations, and decommissioning of workloads and resources.",
+ "githubUsername": "jeffpatton1971",
+ "dateUpdated": "2022-03-10"
+}
