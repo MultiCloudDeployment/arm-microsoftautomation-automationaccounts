@@ -7,7 +7,6 @@ jobs:
     name: Publish
     runs-on: ubuntu-latest
     steps:
-    - name: Setup
     - uses: actions/checkout@v3
     - name: Generate docs
       uses: microsoft/ps-docs@main
