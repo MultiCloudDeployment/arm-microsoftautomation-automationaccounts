@@ -18,5 +18,4 @@ jobs:
       with:
         conventions: Azure.NameByParentPath
         modules: PSDocs,PSDocs.Azure
-        outputPath: './'
         prerelease: true
