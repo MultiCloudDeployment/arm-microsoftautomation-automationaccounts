@@ -23,5 +23,5 @@ jobs:
           # Generate markdown
           Invoke-PSDocument -Module PSDocs.Azure -OutputPath "out/docs" -InputObject $TemplateFile.FullName -InstanceName $docName;
         };
-        Get-ChildItem "out/docs" -Recurse |foreach-object {$_.Fullname}
+        Get-ChildItem "out/docs" -Recurse |foreach-object {Get-Content $_.Fullname}
       shell: pwsh
