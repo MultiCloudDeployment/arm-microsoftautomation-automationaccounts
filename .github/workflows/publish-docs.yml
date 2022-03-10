@@ -37,4 +37,4 @@ jobs:
       run:
         git add *;
         git commit -m "Updating README with latest documentation";
-        git push origin master
+        git push origin main
