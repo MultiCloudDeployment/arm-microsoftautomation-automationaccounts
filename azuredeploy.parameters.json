@@ -1,6 +1,6 @@
 {
  "$schema": "http://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json#",
- "contentVersion": "",
+ "contentVersion": "1.0.0.3",
  "parameters": {
   "name": {
    "value": ""
@@ -12,7 +12,7 @@
    "value": {}
   },
   "SkuName": {
-   "value": ""
+   "value": "Free"
   },
   "DisableLocalAuth": {
    "value": false

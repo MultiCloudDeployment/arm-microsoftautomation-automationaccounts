@@ -1,6 +1,6 @@
 {
  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
- "contentVersion": "1.0.0.2",
+ "contentVersion": "1.0.0.3",
  "parameters": {
   "name":{
    "type": "string"
@@ -28,6 +28,10 @@
   "PublicNetworkAccess": {
    "type": "bool",
    "defaultValue": true
+  },
+  "ResourceGroupName" :{
+   "type": "string",
+   "defaultValue": ""
   }
  },
  "variables": {
@@ -51,11 +55,12 @@
    "type": "Microsoft.Resources/deployments",
    "apiVersion": "2021-04-01",
    "name": "[concat(parameters('name'), '-deployment')]",
+   "resourceGroup": "[parameters('ResourceGroupName')]",
    "properties": {
     "mode": "Incremental",
     "template": {
      "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-     "contentVersion": "1.0.0.2",
+     "contentVersion": "1.0.0.3",
      "parameters": {},
      "variables": {},
      "resources": "[createArray(variables('ArmResource'))]",
@@ -69,7 +74,7 @@
    "type": "object",
    "value": {
     "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-    "contentVersion": "1.0.0.2",
+    "contentVersion": "1.0.0.3",
     "parameters": {},
     "variables": {},
     "resources": "[createArray(variables('ArmResource'))]",
