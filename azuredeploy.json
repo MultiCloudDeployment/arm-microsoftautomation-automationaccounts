@@ -1,17 +1,26 @@
 {
  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
- "contentVersion": "1.0.0.3",
+ "contentVersion": "1.0.0.4",
  "parameters": {
   "name":{
-   "type": "string"
+   "type": "string",
+   "metadata":{
+    "description":"The resource name"
+   }
   },
   "location": {
    "type": "string",
-   "defaultValue": "[resourceGroup().location]"
+   "defaultValue": "[resourceGroup().location]",
+   "metadata":{
+    "description":"Gets or sets the location of the resource."
+   }
   },
   "tags": {
    "type": "object",
-   "defaultValue": {}
+   "defaultValue": {},
+   "metadata":{
+    "description":"Gets or sets the tags attached to the resource."
+   }
   },
   "SkuName": {
    "type": "string",
@@ -19,19 +28,31 @@
     "Free",
     "Basic"
    ],
-   "defaultValue": "Free"
+   "defaultValue": "Free",
+   "metadata":{
+    "description":"The account SKU."
+   }
   },
   "DisableLocalAuth": {
    "type": "bool",
-   "defaultValue": false
+   "defaultValue": false,
+   "metadata":{
+    "description":"Indicates whether requests using non-AAD authentication are blocked"
+   }
   },
   "PublicNetworkAccess": {
    "type": "bool",
-   "defaultValue": true
+   "defaultValue": true,
+   "metadata":{
+    "description":"Indicates whether traffic on the non-ARM endpoint (Webhook/Agent) is allowed from the public internet"
+   }
   },
   "ResourceGroupName" :{
    "type": "string",
-   "defaultValue": ""
+   "defaultValue": "",
+   "metadata":{
+    "description":"The name of the Reosurce Group"
+   }
   }
  },
  "variables": {
@@ -60,7 +81,7 @@
     "mode": "Incremental",
     "template": {
      "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-     "contentVersion": "1.0.0.3",
+     "contentVersion": "1.0.0.4",
      "parameters": {},
      "variables": {},
      "resources": "[createArray(variables('ArmResource'))]",
@@ -74,11 +95,14 @@
    "type": "object",
    "value": {
     "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-    "contentVersion": "1.0.0.3",
+    "contentVersion": "1.0.0.4",
     "parameters": {},
     "variables": {},
     "resources": "[createArray(variables('ArmResource'))]",
     "outputs": {}
+   },
+   "metadata":{
+    "description":"Fully populated template"
    }
   }
  }

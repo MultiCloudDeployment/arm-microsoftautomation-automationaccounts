@@ -1,0 +1,8 @@
+{
+ "$schema": "https://aka.ms/azure-quickstart-templates-metadata-schema#",
+ "itemDisplayName": "Create Azure Automation account",
+ "summary": "This template creates an Automation Account in Azure",
+ "description": "",
+ "githubUsername": "jeffpatton1971",
+ "dateUpdated": "2022-03-10"
+}
