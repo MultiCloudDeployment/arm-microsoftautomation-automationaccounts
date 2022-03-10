@@ -12,6 +12,7 @@ jobs:
     - name: Generate ARM markdowns
       run: |
         Install-Module -Name 'PSDocs.Azure' -Repository PSGallery -force;
+        $VerbosePreference = 'Continue';
         Get-AzDocTemplateFile | ForEach-Object {
           write-host $_.TemplateFile;
           $template = Get-Item -Path $_.TemplateFile;
