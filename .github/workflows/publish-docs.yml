@@ -21,8 +21,10 @@ jobs:
           $docName = "README";
           $ReadmeHeader = "[![Deploy to Azure](https://aka.ms/deploytoazurebutton)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FMultiCloudDeployment%2F$($RepoName)%2F$($Version)%2Fazuredeploy.json)"
           # Generate markdown
-          #Invoke-PSDocument -Module PSDocs.Azure -OutputPath "out/docs" -InputObject $TemplateFile.FullName -InstanceName $docName;
-          Invoke-PSDocument -Module PSDocs.Azure -InputObject $TemplateFile.FullName -InstanceName $docName;
+          Invoke-PSDocument -Module PSDocs.Azure -OutputPath "out/docs" -InputObject $TemplateFile.FullName -InstanceName $docName;
         };
-        #Get-ChildItem "out/docs" -Recurse |foreach-object {Get-Content $_.Fullname}
+        $Readme = Get-Content "out/docs/$($docName).md";
+        Write-Output $ReadmeHeader |Out-File "out/docs/$($docName).md" -Force;
+        Write-Output $Readme |Out-File "out/docs/$($docName).md" -Append;
+        Get-Content "out/docs/$($docName).md";
       shell: pwsh
