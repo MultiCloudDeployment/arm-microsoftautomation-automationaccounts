@@ -13,7 +13,7 @@ jobs:
       run: |
         Install-Module -Name 'PSDocs.Azure' -Repository PSGallery -force;
         Get-AzDocTemplateFile | ForEach-Object {
-          # Generate a standard name of the markdown file. i.e. <name>_<version>.md
+          write-host $_.TemplateFile;
           $template = Get-Item -Path $_.TemplateFile;
           $templateName = $template.Directory.Parent.Name;
           $version = $template.Directory.Name;
