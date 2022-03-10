@@ -31,10 +31,10 @@ jobs:
       shell: pwsh
     - name: Setup Git Config
       run:
-        git config user.name "GitHub Action"
-        git config user.email "<>"
+        git config user.name "GitHub Action";
+        git config user.email "<>";
     - name: Update ReadME
       run:
-        git add *
-        git commit -m "Updating README with latest documentation"
+        git add *;
+        git commit -m "Updating README with latest documentation";
         git push origin master
