@@ -16,10 +16,10 @@ jobs:
         Get-AzDocTemplateFile | ForEach-Object {
           write-host $_.TemplateFile;
           $temp = Get-Content $_.TemplateFile |ConvertFrom-Json;
-          $temp |fl;
           $template = Get-Item -Path $_.TemplateFile;
+          $template |fl;
           $templateName = $template.Directory.Parent.Name;
-          $version = $template.Directory.Name;
+          $version = $temp.ContentVersion;
           $docName = "$($templateName)_$version";
           write-host $docName;
           # Generate markdown
