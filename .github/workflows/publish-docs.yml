@@ -26,5 +26,15 @@ jobs:
         $Readme = Get-Content "out/docs/$($docName).md";
         Write-Output $ReadmeHeader |Out-File "out/docs/$($docName).md" -Force;
         Write-Output $Readme |Out-File "out/docs/$($docName).md" -Append;
-        Get-Content "out/docs/$($docName).md";
+        #Get-Content "out/docs/$($docName).md";
+        Move-Item "out/docs/$($docName).md" . -Force
       shell: pwsh
+    - name: Setup Git Config
+      run:
+        git config user.name "GitHub Action"
+        git config user.email "<>"
+    - name: Update ReadME
+      run:
+        git add *
+        git commit -m "Updating README with latest documentation"
+        git push origin master
