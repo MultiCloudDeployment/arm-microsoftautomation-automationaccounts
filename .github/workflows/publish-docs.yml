@@ -1,16 +1,24 @@
-name: Publish docs
+name: Generate ARM templates docs
 on:
   push:
     branches: [ main ]
 jobs:
-  publish:
-    name: Publish
+  arm_docs:
+    name: Generate ARM template docs
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v3
-    - name: Generate docs
-      uses: microsoft/ps-docs@main
-      with:
-        conventions: Azure.NameByParentPath
-        modules: PSDocs,PSDocs.Azure
-        prerelease: true
+    - name: Checkout
+      uses: actions/checkout@v2
+    - name: Generate ARM markdowns
+      run: |
+        Install-Module -Name 'PSDocs.Azure' -Repository PSGallery -force;
+        Get-AzDocTemplateFile | ForEach-Object {
+          # Generate a standard name of the markdown file. i.e. <name>_<version>.md
+          $template = Get-Item -Path $_.TemplateFile;
+          $templateName = $template.Directory.Parent.Name;
+          $version = $template.Directory.Name;
+          $docName = "$($templateName)_$version";
+          # Generate markdown
+          Invoke-PSDocument -Module PSDocs.Azure -InputObject $template.FullName -InstanceName $docName;
+        }
+      shell: pwsh
