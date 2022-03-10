@@ -14,5 +14,6 @@ markdown:
   useEdgePipes: WhenRequired
 
 output:
-  culture: [ ]
+  culture:
+  - 'en-US'
   path: null
